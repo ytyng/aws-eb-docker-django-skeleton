@@ -7,7 +7,7 @@ from fabric.api import env, run, local, runs_once, lcd, cd
 env.use_ssh_config = True
 env.app_name = 'aws-eb-docker-django-skeleton'
 env.docker_repository = '{}.dkr.ecr.ap-northeast-1.amazonaws.com/{}'.format(
-    '856604848915', env.app_name)
+    '000000000000', env.app_name)
 
 
 @runs_once
