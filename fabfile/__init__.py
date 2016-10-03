@@ -7,7 +7,7 @@ from fabric.api import env, run, local, runs_once, lcd, cd
 env.use_ssh_config = True
 env.app_name = 'aws-eb-docker-django-skeleton'
 env.docker_repository = '{}.dkr.ecr.ap-northeast-1.amazonaws.com/{}'.format(
-    '000000000000', env.app_name)
+    '856604848915', env.app_name)
 
 
 @runs_once
@@ -77,3 +77,13 @@ def manage(subcommands=""):
     else:
         local('docker-compose run {} {}'.format(
             env.app_name, command))
+
+
+@runs_once
+def runserver():
+    """Run django testserver"""
+    command = '/bin/bash -c "cd /var/django/{}/{}; ./manage.py runserver 0.0.0.0:80"'.format(
+        env.app_name, env.app_name
+    )
+
+    local('docker-compose run {} {}'.format(env.app_name, command))
