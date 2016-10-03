@@ -1,0 +1,18 @@
+version: '2'
+services:
+  aws-eb-docker-django-skeleton:
+    build: .
+    image: aws-eb-docker-django-skeleton
+    container_name: aws-eb-docker-django-skeleton
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - .:/var/django/aws-eb-docker-django-skeleton
+    environment:
+      - UWSGI_PROCESSES=1
+      - UWSGI_THREADS=1
+      - APP_NAME=aws-eb-docker-django-skeleton
+      - DJANGO_APP_NAME=aws_eb_docker_django_skeleton
+      - DJANGO_SETTINGS_MODULE=aws_eb_docker_django_skeleton.settings.local
